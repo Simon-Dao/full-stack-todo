@@ -1,5 +1,6 @@
-ssh -i "my-react-key.pem" ubuntu@ec2-54-188-109-129.us-west-2.compute.amazonaws.com
+ssh -i "my-react-key.pem" ubuntu@ec2-34-216-202-104.us-west-2.compute.amazonaws.com
 git clone [git repo]
-sudo apt get-update
+cd full-stack-todo
+sudo apt-get update
 sudo apt install npm
 npm i .
