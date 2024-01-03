@@ -3,6 +3,7 @@ import { getFirestore, collection, getDocs, setDoc, deleteDoc, doc } from 'fireb
 import { API_KEY } from "./config.js";
 import express from 'express'
 import bodyParser from "body-parser";
+import cors from 'cors'
 import fs from 'fs'
 
 // Your web app's Firebase configuration
@@ -28,6 +29,7 @@ const server = express();
 server.use(bodyParser.urlencoded({
     extended: true
 }));
+server.use(cors());
 server.use(bodyParser.json());
 
 //Load project configuration
@@ -54,7 +56,7 @@ server.put('/items/add/:itemID', async (req, res) => {
     try {
         const itemID = req.params.itemID
         const value = req.body.value
-        setDoc(doc(db, 'todos', itemID), { value: value })
+        setDoc(doc(db, 'todos', itemID), { id:itemID, value: value })
         res.sendStatus(200)
     } catch (error) {
         res.sendStatus(500)

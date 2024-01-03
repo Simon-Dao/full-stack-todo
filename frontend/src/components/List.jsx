@@ -5,8 +5,8 @@ function List({todos, deleteItem}) {
   return (
     <ul>
         {
-            todos.map((name, index) => (
-                <Item name={name} index={index} deleteItem={deleteItem} key={Math.random()}/>
+            todos.map((itemObj, index) => (
+                <Item name={itemObj.value} index={index} deleteItem={deleteItem} key={Math.random()}/>
             ))
         }
     </ul>
