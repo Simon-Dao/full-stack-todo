@@ -1,14 +1,25 @@
 import React from 'react'
 import Item from './Item'
 
-function List({todos, deleteItem}) {
+function List({ todos, serverRunning, deleteItem }) {
+
+  let content = (<>{
+    todos.map((itemObj, index) => (
+      <Item name={itemObj.value} index={index} deleteItem={deleteItem} key={Math.random()} />
+    ))
+  }</>)
+
+  if (!serverRunning) {
+    content = (
+      <>
+        Sorry! Our servers are under maintenance. <br/> Maybe try reloading?
+      </>
+    )
+  }
+
   return (
     <ul>
-        {
-            todos.map((itemObj, index) => (
-                <Item name={itemObj.value} index={index} deleteItem={deleteItem} key={Math.random()}/>
-            ))
-        }
+      {content}
     </ul>
   )
 }
