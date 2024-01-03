@@ -1,0 +1,15 @@
+DELETE http://localhost:3001/items/delete/test HTTP/1.1
+content-type: application/json
+
+########
+
+PUT http://localhost:3001/items/add/test3 HTTP/1.1
+content-type: application/json
+
+{
+    "value": "Simon Was Here!!!!!"
+} 
+
+########
+
+GET http://localhost:3001/items/get/ HTTP/1.1
